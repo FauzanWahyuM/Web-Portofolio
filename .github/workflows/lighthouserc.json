@@ -1,0 +1,11 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 1,
+      "puppeteerScript": "./.github/lighthouse-puppeteer.js",
+      "settings": {
+        "chromeFlags": "--no-sandbox --headless --disable-gpu"
+      }
+    }
+  }
+}
