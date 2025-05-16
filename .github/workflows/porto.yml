@@ -22,27 +22,27 @@ jobs:
       # --- TESTING SECTION ---
       - name: Run HTML validation
         run: |
-            npm install -g html-validator-cli
-            html-validator --file index.html --verbose
+          npm install -g html-validator-cli
+          html-validator --file index.html --verbose
 
       - name: Check broken links
         uses: lycheeverse/lychee-action@v1
         with:
-            fargs: >-
-                ./dist/*.html
-                --exclude-file .gitignore
-                --format markdown
-                --output link-check-results.md
-                --timeout 20
-                --max-retries 2
+          args: >-
+            ./dist/*.html
+            --exclude-file .gitignore
+            --format markdown
+            --output link-check-results.md
+            --timeout 20
+            --max-retries 2
 
-      - name: Unggah hasil
+      - name: Upload link check results
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: hasil-pemeriksaan-link
-          path: hasil-pemeriksaan.md        
-            
+          name: link-check-results
+          path: link-check-results.md
+
       # --- BUILD & DEPLOY ---
       - name: Build project
         run: |
