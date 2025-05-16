@@ -1,6 +1,6 @@
 # Portofolio Website Fauzan Wahyu Mubarak
 
-Portfolio profesional yang menampilkan karya, pengalaman, dan keterampilan saya sebagai Software Engineer.
+Portofolio profesional yang menampilkan karya, pengalaman, dan keterampilan saya sebagai Software Engineer.
 
 ## 🚀 Fitur Utama
 
