@@ -28,13 +28,20 @@ jobs:
       - name: Check broken links
         uses: lycheeverse/lychee-action@v1
         with:
-            file: ./dist/index.html
-            args: >-
-                --skip-missing
-                --exclude-linkedin
-                --exclude-twitter
-                --exclude-instagram
+            fargs: >-
+                ./dist/*.html
+                --exclude-file .gitignore
                 --format markdown
+                --output link-check-results.md
+                --timeout 20
+                --max-retries 2
+
+      - name: Unggah hasil
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: hasil-pemeriksaan-link
+          path: hasil-pemeriksaan.md        
             
       # --- BUILD & DEPLOY ---
       - name: Build project
