@@ -1,4 +1,4 @@
-name: Build and Deploy Portfolio
+name: Build, Test, and Deploy
 
 on:
   push:
@@ -19,22 +19,35 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build project
-        run: |
-          mkdir -p dist 
-          cp -r *.html assets/ dist/
-
-      - name: HTML Validation
+      # --- TESTING SECTION ---
+      - name: Run HTML validation
         run: |
           npm install -g html-validator-cli
-          html-validator --file ./dist/index.html
+          html-validator --file index.html --verbose
+
+      - name: Check broken links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          file: ./index.html
+
+      - name: Run Lighthouse audit
+        uses: foo-software/lighthouse-check-action@v10
+        with:
+          urls: "http://localhost:3000"
+          temporaryPublicUrl: true
+          scoreThreshold: 0.8 # Minimum score 80%
+
+      # --- BUILD & DEPLOY ---
+      - name: Build project
+        run: |
+          mkdir -p dist
+          cp -r *.html assets/ dist/
 
       - name: Deploy to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.PAT_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          full_commit_message: "Deploy to GitHub Pages (via GitHub Actions)"
+          force_orphan: true
