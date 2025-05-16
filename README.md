@@ -1,4 +1,4 @@
-# Portfolio Website Fauzan Wahyu Mubarak
+# Portofolio Website Fauzan Wahyu Mubarak
 
 Portfolio profesional yang menampilkan karya, pengalaman, dan keterampilan saya sebagai Software Engineer.
 
