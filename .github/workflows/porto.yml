@@ -30,14 +30,10 @@ jobs:
         with:
             file: ./index.html
 
-      - name: Run Lighthouse audit
-        uses: treosh/lighthouse-ci-action@v2
-        with:
-            urls: |
-                http://localhost:3000
-                temporaryPublicUrl: true
-                configPath: ./.github/workflows/lighthouserc.json
-                budgetPath: ./.github/workflows/lighthouse-budget.json
+      - name: Run Lighthouse
+        run: |
+            npm install -g @lhci/cli
+            lhci autorun --config=./.github/lighthouserc.mjs
 
       # --- BUILD & DEPLOY ---
       - name: Build project
