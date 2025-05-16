@@ -33,7 +33,7 @@ jobs:
       - name: Run Lighthouse
         run: |
             npm install -g @lhci/cli
-            lhci autorun --config=./.github/lighthouserc.mjs
+            lhci autorun --config=./.github/workflows/lighthouserc.mjs
 
       # --- BUILD & DEPLOY ---
       - name: Build project
