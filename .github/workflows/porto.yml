@@ -22,20 +22,20 @@ jobs:
       # --- TESTING SECTION ---
       - name: Run HTML validation
         run: |
-          npm install -g html-validator-cli
-          html-validator --file index.html --verbose
+            npm install -g html-validator-cli
+            html-validator --file index.html --verbose
 
       - name: Check broken links
         uses: lycheeverse/lychee-action@v1
         with:
-          file: ./index.html
+            file: ./index.html
 
       - name: Run Lighthouse audit
-        uses: foo-software/lighthouse-check-action@v10
+        uses: treosh/lighthouse-ci-action@v2
         with:
-          urls: "http://localhost:3000"
-          temporaryPublicUrl: true
-          scoreThreshold: 0.8 # Minimum score 80%
+            urls: http://localhost:3000
+            output: ./lhci-report
+            uploadArtifacts: true
 
       # --- BUILD & DEPLOY ---
       - name: Build project
