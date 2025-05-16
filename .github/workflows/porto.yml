@@ -29,11 +29,20 @@ jobs:
         uses: lycheeverse/lychee-action@v1
         with:
             file: ./index.html
-
-      - name: Run Lighthouse
+      
+      - name: Update npm and install modern dependencies
         run: |
-            npm install -g @lhci/cli
-            lhci autorun --config=./.github/workflows/lighthouserc.mjs
+            npm install -g npm@latest
+            npm install -g @lhci/cli@latest lighthouserc@latest
+
+      - name: Audit with Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+            urls: |
+                http://localhost:3000
+                temporaryPublicUrl: true
+                configPath: ./.github/lighthouserc.json
+                budgetPath: ./.github/lighthouse-budget.json
 
       # --- BUILD & DEPLOY ---
       - name: Build project
