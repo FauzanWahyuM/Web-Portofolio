@@ -1,8 +1,5 @@
 # Portfolio Website Fauzan Wahyu Mubarak
 
-[![GitHub Actions Status](https://github.com/FauzanWahyuM/Web-Portofolio/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/FauzanWahyuM/Web-Portofolio/actions)
-[![GitHub Pages](https://img.shields.io/badge/View-Live%20Demo-brightgreen)](https://fauzanwahyum.github.io/Web-Portofolio/)
-
 Portfolio profesional yang menampilkan karya, pengalaman, dan keterampilan saya sebagai Software Engineer.
 
 ## 🚀 Fitur Utama
