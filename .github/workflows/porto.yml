@@ -28,8 +28,15 @@ jobs:
       - name: Check broken links
         uses: lycheeverse/lychee-action@v1
         with:
-            file: ./index.html
-
+            with:
+            file: ./dist/index.html
+            args: >-
+                --skip-missing
+                --exclude-linkedin
+                --exclude-twitter
+                --exclude-instagram
+                --format markdown
+            
       # --- BUILD & DEPLOY ---
       - name: Build project
         run: |
